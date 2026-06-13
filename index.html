@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafeteira ☕ | Oficial</title>
+    <style>
+        body {
+            background-color: #0b071a; /* Roxo bem escuro gamer */
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        header {
+            padding: 60px 20px 40px 20px;
+            background: linear-gradient(180deg, #180d33 0%, #0b071a 100%);
+        }
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #a855f7;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+            object-fit: cover;
+            margin-bottom: 20px;
+            transition: transform 0.5s ease;
+        }
+        .avatar:hover {
+            transform: rotate(360deg); /* O seu boneco gira quando passa o mouse! */
+        }
+        h1 {
+            font-size: 3rem;
+            color: #bd93f9; /* Roxo neon */
+            text-shadow: 0 0 15px rgba(189, 147, 249, 0.6);
+            margin: 10px 0;
+        }
+        #saudacao {
+            font-size: 1.1rem;
+            color: #a855f7;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #a9a2c9;
+            margin-bottom: 30px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .btn-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1c123e;
+            color: #fff;
+            text-decoration: none;
+            padding: 16px;
+            margin: 18px 0;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border: 2px solid #3b227e;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        /* Efeitos de Hover (Passar o mouse) */
+        .btn-youtube:hover {
+            border-color: #ff0000;
+            background: #2b0000;
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.3);
+            transform: translateY(-3px);
+        }
+        .btn-tiktok:hover {
+            border-color: #00f2fe;
+            background: #011627;
+            box-shadow: 0 8px 20px rgba(0, 242, 254, 0.3);
+            transform: translateY(-3px);
+        }
+        .btn-discord:hover {
+            border-color: #5865F2;
+            background: #1a1c3d;
+            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.3);
+            transform: translateY(-3px);
+        }
+        /* Efeito de clique que o JavaScript vai ativar */
+        .btn-active {
+            transform: scale(0.95) !important;
+        }
+        footer {
+            margin-top: 60px;
+            font-size: 0.9rem;
+            color: #5c5470;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="avatar.png" alt="Cafeteira" class="avatar" onerror="this.style.display='none'; document.getElementById('emoji-fallback').style.display='flex';">
+        <div id="emoji-fallback" style="display:none; width:150px; height:150px; border-radius:50%; background:#8a2be2; margin:0 auto 20px auto; border:4px solid #a855f7; align-items:center; justify-content:center; font-size:4rem; box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);">☕</div>
+        
+        <div id="saudacao">Olá!</div>
+        <h1>CAFETEIRA ☕</h1>
+        <p>Bem-vindo ao hub oficial do canal! 🚀</p>
+    </header>
+
+    <div class="container">
+        <a href="https://youtube.com/@cafeteira-c3z?si=hz6bko40SR5-3x3s" target="_blank" class="btn-link btn-youtube">🔴 Se Inscreva no YouTube</a>
+        <a href="https://www.tiktok.com/@cafeteiraofc?_r=1&_t=ZS-97Bm5ZJ0HNk" target="_blank" class="btn-link btn-tiktok">🎵 Siga no TikTok</a>
+        <a href="https://discord.gg/5WfKhEMN" target="_blank" class="btn-link btn-discord">🎮 Entre no nosso Discord</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Cafeteira. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // 1. MENSAGEM DE BOAS-VINDAS POR HORÁRIO
+        function configurarSaudacao() {
+            const elementoSaudacao = document.getElementById('saudacao');
+            const horaAtual = new Date().getHours();
+            let texto = "Olá!";
+
+            if (horaAtual >= 5 && horaAtual < 12) {
+                texto = "☕ Bom dia!";
+            } else if (horaAtual >= 12 && horaAtual < 18) {
+                texto = "⚡ Boa tarde!";
+            } else {
+                texto = "🌌 Boa noite!";
+            }
+
+            elementoSaudacao.innerText = texto;
+        }
+
+        // 2. EFEITO DE CLIQUE NOS BOTÕES
+        const botoes = document.querySelectorAll('.btn-link');
+        
+        botoes.forEach(botao => {
+            botao.addEventListener('click', () => {
+                // Adiciona a animação de clique
+                botao.classList.add('btn-active');
+                
+                // Remove a animação logo depois para voltar ao normal
+                setTimeout(() => {
+                    botao.classList.remove('btn-active');
+                }, 150);
+            });
+        });
+
+        // Executa a função de saudação assim que a página carregar
+        window.onload = configurarSaudacao;
+    </script>
+</body>
+  </html>
+  
